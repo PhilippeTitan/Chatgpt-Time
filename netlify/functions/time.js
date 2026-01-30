@@ -4,7 +4,7 @@ exports.handler = async () => {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-    hour12: true,
+    hour12: false,
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -12,13 +12,17 @@ exports.handler = async () => {
   };
 
   const now = new Date();
-  const rawTime = new Intl.DateTimeFormat('en-US', options).format(now);
+  const formatter = new Intl.DateTimeFormat('en-US', options);
+  const rawTime = formatter.format(now);
 
   return {
     statusCode: 200,
     headers: {
       "Content-Type": "text/plain",
-      "Cache-Control": "no-cache"
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "GET, OPTIONS"
     },
     body: rawTime
   };
