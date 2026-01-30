@@ -7,8 +7,10 @@
     <meta property="og:title" content="Port-au-Prince Live Time">
     <meta property="og:description" content="Current time and date for Port-au-Prince, Haiti.">
     <meta property="og:type" content="website">
-    <title>Port-au-Prince Live Time</title>
+    <title>Port-au-Prince Live Time | Official Haitian Local Time</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇭🇹</text></svg>">
+    <meta property="og:site_name" content="Chatgpt Time">
+    <meta name="robots" content="index, follow">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -62,9 +64,30 @@
         <div id="clock">00:00:00</div>
         <div id="date">Loading...</div>
         <noscript>
-            <p style="color: #ef4444; margin-top: 1rem;">JavaScript is required to see the live time. This page displays the current time in Port-au-Prince, Haiti (UTC-5/UTC-4).</p>
+            <div style="color: #ef4444; margin-top: 1rem; border: 1px solid #450a0a; padding: 10px; border-radius: 8px; background: #2d0606;">
+                <strong>Notice:</strong> This page uses JavaScript to provide a live-updating clock for Port-au-Prince, Haiti (Eastern Time). 
+                If you are a bot, please note the timezone is America/Port-au-Prince (UTC-5/UTC-4).
+            </div>
         </noscript>
     </div>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Port-au-Prince Live Time",
+      "description": "Live local time in Port-au-Prince, Haiti.",
+      "mainEntity": {
+        "@type": "Event",
+        "name": "Current Time in Haiti",
+        "startDate": "2026-01-30T17:45:00-05:00",
+        "location": {
+          "@type": "Place",
+          "name": "Port-au-Prince, Haiti"
+        }
+      }
+    }
+    </script>
 
     <script>
         function updateTime() {
