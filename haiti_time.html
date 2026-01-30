@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port-au-Prince Live Time</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .container {
+            text-align: center;
+            background: #1e293b;
+            padding: 3rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid #334155;
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        #clock {
+            font-size: 5rem;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            margin: 0;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #date {
+            font-size: 1.25rem;
+            margin-top: 1rem;
+            color: #64748b;
+        }
+        .flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flag">🇭🇹</div>
+        <h1>Port-au-Prince, Haiti</h1>
+        <div id="clock">00:00:00</div>
+        <div id="date">Loading...</div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            
+            // Format time for Port-au-Prince
+            const timeOptions = {
+                timeZone: 'America/Port-au-Prince',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            
+            const dateOptions = {
+                timeZone: 'America/Port-au-Prince',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            const timeFormatter = new Intl.DateTimeFormat('en-US', timeOptions);
+            const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
+
+            document.getElementById('clock').textContent = timeFormatter.format(now);
+            document.getElementById('date').textContent = dateFormatter.format(now);
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
