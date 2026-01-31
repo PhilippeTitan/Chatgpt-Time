@@ -1,6 +1,6 @@
 exports.handler = async (event) => {
   const now = new Date();
-  const rawTime = new Intl.DateTimeFormat('en-US', {
+  const timeStr = new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Port-au-Prince',
     weekday: 'long',
     year: 'numeric',
@@ -12,15 +12,16 @@ exports.handler = async (event) => {
     hour12: false
   }).format(now);
 
+  // Generate a random 3-character proof key
+  const proofKey = Math.random().toString(36).substring(2, 5).toUpperCase();
+
   return {
     statusCode: 200,
     headers: {
       "Content-Type": "text/plain",
       "Cache-Control": "no-cache, no-store, must-revalidate",
-      "Access-Control-Allow-Origin": "*",
-      "Pragma": "no-cache",
-      "Expires": "0"
+      "Access-Control-Allow-Origin": "*"
     },
-    body: rawTime
+    body: `${timeStr} [KEY: ${proofKey}]`
   };
 };
