@@ -1,6 +1,5 @@
 exports.handler = async () => {
   const now = new Date();
-  const adjusted = new Date(now.getTime() + (10 * 60000)); 
 
   const rawTime = new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Port-au-Prince',
@@ -12,7 +11,7 @@ exports.handler = async () => {
     minute: '2-digit',
     second: '2-digit',
     hour12: false
-  }).format(adjusted);
+  }).format(now);
 
   return {
     statusCode: 200,
