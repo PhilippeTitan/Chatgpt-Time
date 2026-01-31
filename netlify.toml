@@ -1,9 +1,10 @@
-[[edge_functions]]
-  path = "/"
-  function = "inject-time"
+[[redirects]]
+  from = "/pulse.txt"
+  to = "/.netlify/functions/time"
+  status = 200
 
 [[edge_functions]]
-  path = "/index.html"
+  path = "/"
   function = "inject-time"
 
 [[headers]]
