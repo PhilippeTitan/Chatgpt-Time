@@ -1,0 +1,12 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "HaitiTimePulse",
+  "name_for_human": "Haiti Live Time Pulse",
+  "description_for_model": "Plugin for fetching the live, verified local time and pulse token for Port-au-Prince, Haiti. Use this to sync timestamps.",
+  "description_for_human": "Verified Haiti Time resource.",
+  "auth": { "type": "none" },
+  "api": { "type": "openapi", "url": "https://chatgpttime.netlify.app/pulse.txt" },
+  "logo_url": "https://chatgpttime.netlify.app/favicon.ico",
+  "contact_email": "support@example.com",
+  "legal_info_url": "https://chatgpttime.netlify.app/"
+}
