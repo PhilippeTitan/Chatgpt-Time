@@ -1,0 +1,12 @@
+[[edge_functions]]
+  path = "/"
+  function = "inject-time"
+
+[[edge_functions]]
+  path = "/index.html"
+  function = "inject-time"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
