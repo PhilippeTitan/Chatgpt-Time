@@ -1,7 +1,11 @@
+const crypto = require('crypto');
+
 exports.handler = async (event) => {
   const now = new Date();
+  const timeZone = 'America/Port-au-Prince';
+  
   const timeStr = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'America/Port-au-Prince',
+    timeZone,
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -12,8 +16,17 @@ exports.handler = async (event) => {
     hour12: false
   }).format(now);
 
-  // Generate a random 3-character proof key
-  const proofKey = Math.random().toString(36).substring(2, 5).toUpperCase();
+  // Generate a code that ONLY changes every minute
+  const minuteSeed = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(now);
+  
+  const hash = crypto.createHash('sha256').update(minuteSeed).digest('hex').substring(0, 4).toUpperCase();
 
   return {
     statusCode: 200,
@@ -22,6 +35,6 @@ exports.handler = async (event) => {
       "Cache-Control": "no-cache, no-store, must-revalidate",
       "Access-Control-Allow-Origin": "*"
     },
-    body: `${timeStr} [KEY: ${proofKey}]`
+    body: `${timeStr} [HASH: ${hash}]`
   };
 };
