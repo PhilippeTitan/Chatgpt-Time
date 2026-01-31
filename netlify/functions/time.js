@@ -1,28 +1,25 @@
 exports.handler = async () => {
-  const options = {
+  const now = new Date();
+  const adjusted = new Date(now.getTime() + (10 * 60000)); 
+
+  const rawTime = new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Port-au-Prince',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
     weekday: 'long',
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
-  };
-
-  const now = new Date();
-  const formatter = new Intl.DateTimeFormat('en-US', options);
-  const rawTime = formatter.format(now);
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  }).format(adjusted);
 
   return {
     statusCode: 200,
     headers: {
       "Content-Type": "text/plain",
-      "Cache-Control": "no-cache, no-store, must-revalidate",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Methods": "GET, OPTIONS"
+      "Cache-Control": "no-cache",
+      "Access-Control-Allow-Origin": "*"
     },
     body: rawTime
   };
